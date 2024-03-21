@@ -1,0 +1,29 @@
+.baseContainer {
+  border: 1px solid gray;
+  padding: 15px;
+}
+
+.containerForTopList {
+  width: calc((100% - 60px) / 4);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.15),
+    0 10px 10px rgba(0, 0, 0, 0.15);
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.containerImg{
+  width: 100%;
+  height: 170px;
+}
+
+.topImg {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
