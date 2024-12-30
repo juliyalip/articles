@@ -1,4 +1,3 @@
-import axios from 'axios';
 import api from './interceptors';
 
 
@@ -24,7 +23,7 @@ const fetchCurrentUser = async()=>{
 
 const onLogoutUser = async ()=>{
     try{
-     const response = await axios.post('/logout')
+     const response = await api.post('/logout')
         return response
     }catch(error){
         console.log(error)

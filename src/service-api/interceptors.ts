@@ -23,20 +23,20 @@ api.interceptors.response.use(
         if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
             try {
-                // Используем api для согласованности
-                const refreshResponse = await api.post('/update-tokens');
+               
+                const refreshResponse= await api.post('/update-tokens');
+
                 const newAccessToken = refreshResponse.headers['authorization'];
                 
-                // Сохраняем новый токен
+               if(newAccessToken){
                 window.localStorage.setItem('accessToken', newAccessToken);
-
-                // Обновляем заголовок и повторяем запрос
-                originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+               }
+                       
                 return api(originalRequest);
             } catch (errorRefreshToken) {
                 console.error('Failed to refresh token:', errorRefreshToken);
-                window.localStorage.clear(); // Очищаем данные
-                window.location.href = '/login'; // Перенаправляем пользователя
+                window.localStorage.clear(); 
+                window.location.href = '/login'; 
                 return Promise.reject(errorRefreshToken);
             }
         }
