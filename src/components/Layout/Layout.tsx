@@ -1,16 +1,21 @@
 import { Outlet, Link } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
-import { routers } from '../../data/router/router';
+import AppBar from '../AppBar/AppBar';
+import Footer from '../Footer/Footer';
+
 import Container from '../Container/Container';
+import style from './Layout.module.scss'
 
 export default function Layout() {
   return (
-    <>
-      <Navigation items={routers} />
-      <Container size="medium">
+    <div className={style.container}>
+    <AppBar />
+      <main>
+      <Container >
         <Outlet />
       </Container>
-    </>
+      </main>
+    
+    </div>
   );
 }
  

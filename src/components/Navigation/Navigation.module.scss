@@ -1,0 +1,20 @@
+
+
+.navList{
+    display: flex;
+   
+
+    .navItem:not(:last-child){
+        margin-right: 20px;
+    }
+}
+
+.navItemLink {
+     color: gray;
+
+  }
+  
+  .navItemActive {
+    color: black;
+  }
+

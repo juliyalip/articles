@@ -1,0 +1,14 @@
+.navList {
+  display: flex;
+}
+.navList .navItem:not(:last-child) {
+  margin-right: 20px;
+}
+
+.navItemLink {
+  color: gray;
+}
+
+.navItemActive {
+  color: black;
+}/*# sourceMappingURL=Navigation.module.css.map */

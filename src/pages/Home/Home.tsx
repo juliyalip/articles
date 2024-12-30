@@ -1,36 +1,68 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import TopArticlesList from '../../components/TopArticlesList/TopArticlesList';
+import Container from '../../components/Container/Container';
+import List from '../../components/List/List';
+import ArticleItem from '../../components/ArticleItem/ArticleItem';
 import imgSl1 from '../../images/slovenia/imgSl1.jpg';
+import { getAllArticles } from '../../service-api/getAllArticles';
 import { IArticle } from '../../interfaces/articles';
+import Button from '../../components/Button/Button';
+
+import style from './Home.module.scss'
 
 export default function Home() {
-  const [articles, setArticlesTop] = useState<IArticle[]>([]);
-  const [loader, setLoader] = useState<boolean>(false);
+  const [articles, setArticles] = useState<IArticle[]>([]); 
+  const [page, setPage] = useState<number>(1); 
+  const [loading, setLoading] = useState<boolean>(false); 
+const [hasArticles, setHasArticles] = useState<boolean>(true)
+
+
   useEffect(() => {
-    setLoader(true);
-    //  @ts-ignore
-    const getData = async () => {
-      const res = await fetch(
-        `https://hn.algolia.com/api/v1/search?query=story&page=1`,
-      );
-      const { hits } = await res.json();
+    let isMounted = true; 
+    setLoading(true); 
 
-      const allData: IArticle[] = hits.map(({ title, story_id }: IArticle) => {
-        return {
-          title,
-          story_id,
-          url: imgSl1,
-        };
-      });
-      setArticlesTop(allData);
+    const getArticles = async () => {
+      try {
+        const {data, hasMoreArticles} = await getAllArticles(page); 
+ if(isMounted){
+  setArticles(prevState => [...prevState, ...data])
+  setHasArticles(hasMoreArticles)
+ }
+      } catch (error) {
+        console.error(error); 
+      } finally {
+        if (isMounted) {
+          setLoading(false); 
+        }
+      }
     };
-    getData();
-  }, []);
+    getArticles();
+    return () => {
+      isMounted = false; 
+    };
+  }, [page]); 
 
-  const topArticles = articles.slice(0, 4);
-  const allArticlesList = articles.slice(4, 9);
+  const handleOnLoadMore = () => {
+    setPage((prevPage) => prevPage + 1); 
+  };
 
   return (
-    <div>{articles.length > 0 && <TopArticlesList items={topArticles} />}</div>
+    <Container>
+      {loading && <p>Loading...</p>} 
+      {articles.length > 0 && (
+        <List
+          items={articles}
+          getRender={(article: IArticle) => (
+            <ArticleItem key={article._id} styleItem="standart" item={article} />
+          )}
+        />
+      )}
+      {(!loading && hasArticles) && (
+        <Button type="button" onClick={handleOnLoadMore}>
+          Load more
+        </Button>
+      )}
+    </Container>
   );
 }
+

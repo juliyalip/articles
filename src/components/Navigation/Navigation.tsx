@@ -1,21 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Irout } from "../../data/router/router";
+import classNames from "classnames";
+import { NavLink} from "react-router-dom";
+import { IRout } from "../../data/router/router";
+import styles from './Navigation.module.scss'
 
 interface IProp {
-  items: Irout[];
+  navigationList: IRout[];
 }
 
-export default function Navigation({ items }: IProp) {
+export default function Navigation({ navigationList}: IProp) {
   return (
-    <nav>
-      <ul>
-        {items.map(({ title, path, id }) => (
-          <li key={id}>
-            <Link to={`${path}`}>{title}</Link>
+  
+    <nav >
+      <ul className={styles.navList}>
+        {navigationList.map(({ label, path, id }) => (
+          <li key={id} className={styles.navItem}>
+            <NavLink to={`${path}`}  className={({ isActive }) => classNames(styles.navItemLink, { [styles.navItemActive]: isActive })}>{label}</NavLink>
           </li>
         ))}
       </ul>
     </nav>
+  
+   
   );
 }

@@ -1,0 +1,16 @@
+.navLink {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.navLink:not(:last-child) {
+  margin-right: 20px;
+}
+
+.menuUser {
+  display: flex;
+}
+
+.greeting {
+  margin-right: 25px;
+}/*# sourceMappingURL=UserMenu.module.css.map */

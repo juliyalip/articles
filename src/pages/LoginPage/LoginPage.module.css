@@ -1,0 +1,9 @@
+.agreement {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.agreement > a {
+  font-weight: 900;
+}/*# sourceMappingURL=LoginPage.module.css.map */

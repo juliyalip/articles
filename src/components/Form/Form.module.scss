@@ -1,0 +1,10 @@
+@import '../../sass/variables.scss';
+
+.formContainer {
+max-width: 400px;
+margin: 40px auto;
+padding: 20px;
+border: 1px solid $form-border-color;
+
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);}

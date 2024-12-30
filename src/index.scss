@@ -1,6 +1,9 @@
-html {box-sizing: border-box;}
-
-*,*::before, *::after{box-sizing: inherit;}
+@import './sass/variables.scss';
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -9,6 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: $primary-font-family;
+color: $primary-text-color
 }
 
 code {
@@ -27,4 +32,8 @@ li {
 img {
   display: block;
   width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit
 }

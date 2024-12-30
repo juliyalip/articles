@@ -1,14 +1,16 @@
 import { ReactNode } from "react";
+import {IArticle} from '../../interfaces/articles'
+import style from './list.module.scss'
 
 interface IProps<T> {
  items: T[],
  getRender: (item: T) => ReactNode
-  disp?: 'flex',
+  display?: 'flex'| 'block' | 'grid',
 }
- //  @ts-ignore
-export default function List({ items, getRender, disp }:  IProps<T>) {
+
+export default function List<T>({ items, getRender, display ="block" }:  IProps<T>) {
   return (
-    <ul style={{ display: disp === 'flex' ? 'flex' : 'blok' }}>
+    <ul style={{ display }} className={style.list}>
       {items.map(getRender)}
     </ul>
   );

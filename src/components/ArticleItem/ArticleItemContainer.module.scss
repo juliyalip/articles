@@ -1,9 +1,11 @@
-.baseContainer {
-  border: 1px solid gray;
-  padding: 15px;
-}
+@import '../../sass/variables.scss';
 
-.containerForTopList {
+.baseItem{
+   padding: 15px;
+   border: 0.5px solid $secondary-text-color;
+ }
+
+.topItem {
   width: calc((100% - 60px) / 4);
   box-shadow:
     0 14px 28px rgba(0, 0, 0, 0.15),
@@ -14,16 +16,76 @@
   }
 }
 
-.containerImg{
+.country{
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: 170px;
+  margin: 0;
+  background-color: $background-color-title;
+  color: white;
+   padding: 15px 10px;
+  font-weight: 700;
 }
 
-.topImg {
+.city{
+  color: $secondary-text-color;
+  font-size: 0.9rem;
+}
+
+.standartItem {
+  display: flex;
+  width: 100%;
+  &:nth-child(2n){
+    flex-direction: row-reverse;
+  }
+
+  @media screen and (min-width: 1200px){
+    margin-bottom: 20px;
+  }
+}
+
+.baseContainerImg{
+ border-radius: 5px;
+ overflow: hidden;
+ position: relative
+ }
+
+.standartContainerImg{
+width: 300px;
+}
+
+.images {
   display: block;
   height: 100%;
   width: 100%;
 
   object-fit: cover;
   object-position: center;
+}
+
+.images:hover .standartContainerImg{
+  animation: changeBackgroundColor 2000ms;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+}
+
+.standartContent{
+  margin-left: 20px;
+
+}
+
+@keyframes changeBackgroundColor{
+  0%{
+      background-color: gray;
+  }
+  50% {
+    background-color: antiquewhite;
+  }
+100%{
+  background-color: gray;
+}
 }

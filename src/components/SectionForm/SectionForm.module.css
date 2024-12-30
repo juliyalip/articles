@@ -1,0 +1,18 @@
+.sectionStyle {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+.sectionStyle .label {
+  margin-bottom: 10px;
+}
+.sectionStyle .input {
+  padding: 7px 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  transition: border-color 0.3s easy;
+}
+.sectionStyle .input:focus {
+  border-color: #000000;
+  outline: none;
+}/*# sourceMappingURL=SectionForm.module.css.map */

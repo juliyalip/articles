@@ -1,16 +1,18 @@
 import React from 'react'
-import style from './Typography.module.scss'
+import styles from './Typography.module.scss'
+
+console.log(styles)
 
 interface Props{
-type: "title" | "description",
+type: "title" | "description" | "subtitle",
 children: React.ReactNode
 }
 
 export default function Typography({type, children}: Props){
     return(
-        <p className={style[type]}>
+        <div className={styles[type]}>
             {children}
-        </p>
+        </div>
     )
 }
 

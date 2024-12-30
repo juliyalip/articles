@@ -1,0 +1,88 @@
+.baseItem {
+  padding: 15px;
+  border: 0.5px solid #757575;
+}
+
+.topItem {
+  width: calc((100% - 60px) / 4);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.topItem:not(:last-child) {
+  margin-right: 20px;
+}
+
+.country {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  background-color: rgba(47, 48, 58, 0.8);
+  color: white;
+  padding: 15px 10px;
+  font-weight: 700;
+}
+
+.city {
+  color: #757575;
+  font-size: 0.9rem;
+}
+
+.standartItem {
+  display: flex;
+  width: 100%;
+}
+.standartItem:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+@media screen and (min-width: 1200px) {
+  .standartItem {
+    margin-bottom: 20px;
+  }
+}
+
+.baseContainerImg {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.standartContainerImg {
+  width: 300px;
+}
+
+.images {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.images:hover .standartContainerImg {
+  animation: changeBackgroundColor 2000ms;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+}
+
+.standartContent {
+  margin-left: 20px;
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: gray;
+  }
+  50% {
+    background-color: antiquewhite;
+  }
+  100% {
+    background-color: gray;
+  }
+}/*# sourceMappingURL=ArticleItemContainer.module.css.map */
