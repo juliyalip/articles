@@ -1,8 +1,6 @@
 import React from 'react'
 import styles from './Typography.module.scss'
 
-console.log(styles)
-
 interface Props{
 type: "title" | "description" | "subtitle",
 children: React.ReactNode

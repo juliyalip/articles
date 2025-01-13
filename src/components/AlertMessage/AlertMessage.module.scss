@@ -1,0 +1,12 @@
+@import '../../sass//variables.scss';
+
+.base {
+  font-size: 0.8rem;
+  color: $secondary-text-color;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: $error-text-color;
+
+}
