@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import  {useState, useEffect} from 'react'
 import { useLocation , Link} from 'react-router-dom'
 import { EditIcon } from '../../images/icon/EditIcon'
 import { BinIcon } from '../../images/icon/binIcon'
 import { ICategory } from '../../interfaces/articles';
-import { getAllCategories } from '../../service-api/getAllCategories'
+import { getAllCategories } from '../../service-api/categories-api'
 
 
 export default function CategoryPage(){

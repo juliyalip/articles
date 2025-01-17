@@ -4,7 +4,7 @@ import Container from '../../components/Container/Container';
 import List from '../../components/List/List';
 import ArticleItem from '../../components/ArticleItem/ArticleItem';
 import imgSl1 from '../../images/slovenia/imgSl1.jpg';
-import { getAllArticles } from '../../service-api/getAllArticles';
+import { getAllArticles } from '../../service-api/articles-api';
 import { IArticle } from '../../interfaces/articles';
 import Button from '../../components/Button/Button';
 

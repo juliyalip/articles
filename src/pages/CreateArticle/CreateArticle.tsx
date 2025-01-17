@@ -1,11 +1,18 @@
 import React from 'react'
+import { useArticlesContext } from '../../context/articlesContext'
 import Container from '../../components/Container/Container'
-import FormArticle from '../../components/FormArticle/FormArticle'
+import CreateFormArticle from '../../components/CreateFormArticle/CreateFormArticle'
+
+
 
 export default function CreateArticle (){
+    const {categories} = useArticlesContext()
+    
+    console.log(categories)
     return(
         <Container >
-            <FormArticle />
+            <CreateFormArticle />
+          
 
         </Container>
 

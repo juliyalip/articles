@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState, useEffect, useContext } from 'react'
-import api from '../service-api/interceptors'
 import userServiceApi from '../service-api/userServiceApi'
 import { User } from '../interfaces/user'
 import axios from 'axios'
@@ -75,7 +74,7 @@ export const UserProvider = ({ children }: IProp) => {
         }
     }
 
-    console.log('user', user)
+    
     const onLogout = async () => {
       
         try {
@@ -104,14 +103,3 @@ export const UserProvider = ({ children }: IProp) => {
 export const useUserContext = () => useContext(UserContext)
 
 
-//   const onLogin = async (email: string, password: string) => {
-//       try {
-//           const accessToken = await userServiceApi.onLogin(email, password);
-//           window.localStorage.setItem('accessToken', accessToken);
-//           setToken(accessToken);
-//           api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-//            setIsAuthorized(true)
-//       } catch (error) {
-//           console.log(error);
-//       }
-//   }

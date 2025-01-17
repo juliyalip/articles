@@ -1,41 +1,60 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select, { components, ControlProps } from 'react-select';
-import style from './Select.module.scss';
+import { useArticlesContext } from '../../context/articlesContext';
+import styles from './Select.module.scss';
 import { ICategory } from '../../interfaces/articles';
 
+const ControlComponent = (props: ControlProps<ICategory, false>) => (
 
-export interface ColourOption {
-  readonly value: string;
-  readonly label: string;
- }
-
-
- export const colourOptions: readonly ColourOption[] = [
-  { value: 'ocean', label: 'Ocean' },
-  { value: 'blue', label: 'Blue' }
-]
-
-
-const controlStyles = {
-  border: '1px solid black',
-  padding: '5px',
-   color: 'green',
-};
-
-const ControlComponent = (props: ControlProps<ColourOption, false>) => (
-  <div style={controlStyles}>
-    <p>Custom Control</p>
-    <components.Control {...props} />
+  <div className={styles.container}>
+    <span className={styles.label}>country</span>
+    <components.Control {...props}></components.Control>
   </div>
-);
+)
 
+interface IProp {
+  country: ICategory,
+  onChooseCountry: (country: ICategory | null) => void
+}
 
+export default function SelectCountry({ country, onChooseCountry }: IProp) {
+  const { categories } = useArticlesContext();
 
+  const getOptionLabel = (e: ICategory) => e.title;
+  const getOptionValue = (e: ICategory) => e._id;
 
-export default function SelectCountry() {
   return (
-    <div>
-  
-    </div>
+    <Select
+      options={categories}
+      defaultValue={country}
+      components={{ Control: ControlComponent }}
+      getOptionLabel={getOptionLabel}
+      getOptionValue={getOptionValue}
+      onChange={onChooseCountry}
+      value={country} styles={{
+        control: (baseStyles, state) => ({
+          ...baseStyles,
+          outline: "none",
+          padding: "0 10px",
+          borderColor: state.isFocused ? "#000000" : "#cccccc",
+          boxShadow: state.isFocused ? "0 0 0 0.5px #000000" : "none",
+
+        }),
+        input: (baseStyles) => ({
+          ...baseStyles,
+          margin: "0",
+          padding: "0",
+        }),
+        valueContainer: (baseStyles) => ({
+          ...baseStyles,
+          padding: "0",
+        }),
+        indicatorsContainer: (baseStyles) => ({
+          ...baseStyles,
+          padding: "0",
+        }),
+
+      }}
+    />
   );
 }

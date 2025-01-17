@@ -1,4 +1,4 @@
-type ObjectId = string & { readonly __brand: unique symbol };
+export type ObjectId = string & { readonly __brand: unique symbol };
 
   
   export interface IArticle{

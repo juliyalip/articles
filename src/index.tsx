@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { UserProvider } from './context/userContext';
+import { ArticleProvider } from './context/articlesContext';
 import { BrowserRouter } from "react-router-dom";
 import './index.scss';
 import App from './App';
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <UserProvider>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
+      <ArticleProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ArticleProvider>
     </UserProvider>
   </React.StrictMode>
 );

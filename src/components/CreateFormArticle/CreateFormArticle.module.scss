@@ -1,0 +1,31 @@
+@import '../../sass/variables.scss';
+
+
+.container{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid $form-border-color;
+        border-radius: 8px;
+    box-shadow: $heavy-shadow;
+}
+
+.label{
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.description{
+    width: 100%;
+    height: 400px;
+    padding: 7px 10px;
+    margin-bottom: 20px;
+   border: 0.5px solid $input-border-color;
+   border-radius: 4px;
+   outline: none;
+   resize: none;
+   transition: border-color 0.3s easy;
+   &:focus{
+    border-color: $input-focus-color;
+   }
+}
